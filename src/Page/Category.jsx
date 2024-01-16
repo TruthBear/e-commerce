@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Pagination from 'react-js-pagination';
 import { Link, useParams } from 'react-router-dom'
 
 export default function Product() {
   const category = useParams().id;
   const [products, setProducts] = useState({});
-  const [page, setPage] = useState(2)
-  
+  const [page, setPage] = useState(1)
   
   useEffect(()=>{
     const url = `https://kecommerce.shop/api/categories/${category}/detail?page=${page}`
@@ -17,12 +17,17 @@ export default function Product() {
     .catch(function (error) {
       console.log(error);
     })
-  },[category])
+  },[category, page])
 
+  function handlePageChange(page) {
+    console.log(`active page is ${page}`);
+    setPage(page);
+  }
+  
   return (
     <main className='flex justify-center'>
       <div className=''>
-        <ul className='flex flex-wrap gap-[50px] w-[1200px]'>
+        <ul className='flex flex-wrap gap-x-[50px] gap-y-[10px] w-[1200px]'>
           {
           products.length > 0 ? products.map((item) => {
             return <Link  key={item.id} to={`/product/${item.id}`}><li className='w-[200px] hover:bg-gray-200 p-3'>
@@ -33,9 +38,16 @@ export default function Product() {
           }) :"못받음"
           }
         </ul>
-        <div className='flex justify-between'>
-          <button className='bg-slate-100 p-2'>왼쪽</button>
-          <button className='bg-slate-100 p-2'>오른쪽</button>
+        <div className='flex justify-center'>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={20}
+            totalItemsCount={10000}
+            pageRangeDisplayed={5}
+            prevPageText={"‹"}
+            nextPageText={"›"}
+            onChange={handlePageChange}
+          />
         </div>
       </div>
     </main>
