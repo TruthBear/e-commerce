@@ -1,4 +1,4 @@
-#네트리파이 주소
+# 네트리파이 주소
 https://main--radiant-eclair-f68822.netlify.app/
 
 # Getting Started with Create React App
