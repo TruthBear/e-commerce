@@ -11,6 +11,7 @@ export default function Product() {
     const url = `https://kecommerce.shop/api/categories/${category}`
     axios.get(url)
     .then(function (response) {
+      console.log(response)
       setProducts(response.data.entity.products)
       console.log(url)
     })
@@ -19,22 +20,9 @@ export default function Product() {
     })
   },[category])
 
-  
-
-  
-
-  // const url = `https://kecommerce.shop/api/categories/${category}`
-  // fetch(url)
-  // .then(res => res.json())
-  // .then(json => {
-  //   setPoriducts(json)
-  //   console.log(products)
-  // })
-  // .catch(err => console.error('error:' + err));
-    
   return (
     <main className='flex justify-center'>
-      <div className='w-[1200px] pt-10'>
+      <div className='w-[1200px]'>
         <ul className='flex flex-wrap gap-[50px]'>
           {
           products.length > 0 ? products.map((item) => {
@@ -45,7 +33,7 @@ export default function Product() {
             </li>
           }) :"못받음"
           }
-        </ul>    
+        </ul>   
       </div>
     </main>
   )

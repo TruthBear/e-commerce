@@ -6,8 +6,8 @@ export default function Root() {
   return (
     <>
       <Nav />
-      <div id='detail'>
-      <Outlet />
+      <div id='detail' className='pt-10'>
+        <Outlet />
       </div>
     </>
   )

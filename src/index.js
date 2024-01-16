@@ -5,23 +5,44 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './Page/Root';
 import Category from './Page/Category';
 import Product from './Page/Product';
+import Home from './Page/Home';
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Root />,
+//     children: [
+//       {
+//         path: "/categories/:id",
+//         element: <Category />
+//       },
+//       {
+//         path: "/product/:id",
+//         element: <Product />
+//       }
+//     ]
+//   }
+// ])
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "/categories/:id",
-        element: <Category />
-      },
-      {
-        path: "/product/:id",
-        element: <Product />
-      }
-    ]
-  }
-])
+    {
+      element: <Root />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/categories/:id",
+          element: <Category />
+        },
+        {
+          path: "/product/:id",
+          element: <Product />
+        }
+      ]
+    }
+  ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
