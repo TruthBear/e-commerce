@@ -1,12 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
+
+  const category = [
+    "TOP", "OUTER", "PANTS", "ONEPIECE", "SKIRT", "SNEAKERS", "SHOES", "HEAD_WEAR", "ACCESSORY", 
+  ]
+
+  const categoryPrint = category.map(function(item, index){
+    return <li key={index}><Link to={`/categories/${item}`}>{item}</Link></li>
+  })
+
+
   return (
     <header className='flex flex-col items-center '>
-      
       <div className='bg-red-100 w-[1200px]'> 
         <div className=' flex justify-between items-center'> 
-          <div id='logo'>로고 넣을꺼임</div>
+          <div id='logo'><Link to='/'>로고 넣을꺼임</Link></div>
           <div className='text-sm'>
             <ul className='flex [&>li]:after:text-gray-200 [&>li]:after:mx-2 [&>li:last-child]:after:mx-0 [&>li]:after:content-["|"] [&>li:last-child]:after:content-[""]'>
               <li>LOGIN</li>
@@ -27,15 +37,7 @@ export default function Nav() {
       </div>
       <nav className='bg-blue-100 w-[1200px]'>
         <ul className='flex space-x-4 justify-evenly text-xl'>
-          <li>TOP</li>
-          <li>OUTER</li>
-          <li>PANTS</li>
-          <li>ONEPIECE</li>
-          <li>SKIRT</li>
-          <li>SNEAKERS</li>
-          <li>SHOES</li>
-          <li>HEAD_WEAR</li>
-          <li>ACCESSORY</li>
+          {categoryPrint}
         </ul>
       </nav>
     </header>
