@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <>
       <Nav />
-      <div id='detail' className='pt-10'>
+      <div id='detail' className='py-10'>
         <Outlet />
       </div>
     </>

@@ -7,23 +7,6 @@ import Category from './Page/Category';
 import Product from './Page/Product';
 import Home from './Page/Home';
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Root />,
-//     children: [
-//       {
-//         path: "/categories/:id",
-//         element: <Category />
-//       },
-//       {
-//         path: "/product/:id",
-//         element: <Product />
-//       }
-//     ]
-//   }
-// ])
-
 const router = createBrowserRouter([
     {
       element: <Root />,
