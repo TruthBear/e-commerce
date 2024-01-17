@@ -11,7 +11,6 @@ export default function Product() {
     axios.get(url)
     .then(function (response) {
       setProduct(response.data.entity)
-      console.log(response.data.entity)
     })
     .catch(function (error) {
       console.log(error);

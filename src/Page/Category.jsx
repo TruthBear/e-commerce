@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Pagination from 'react-js-pagination';
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export default function Product() {
   const category = useParams().id;
   const [products, setProducts] = useState({});
   const [page, setPage] = useState(1)
-  const location = useLocation();
   
   useEffect(()=>{
     const url = `https://kecommerce.shop/api/categories/${category}/detail?page=${page}`

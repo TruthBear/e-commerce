@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { categoryList } from '../category';
 
 export default function Nav() {
 
@@ -12,9 +13,7 @@ export default function Nav() {
     setKeyword(e.target.value)
   }
 
-  const category = [
-    "TOP", "OUTER", "PANTS", "ONEPIECE", "SKIRT", "SNEAKERS", "SHOES", "HEAD_WEAR", "ACCESSORY", 
-  ]
+  const category = categoryList
 
   const categoryPrint = category.map(function(item, index){
     return <li key={index}><Link to={`/categories/${item}`} state={{key:"gd"}}>{item}</Link></li>
