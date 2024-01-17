@@ -6,9 +6,9 @@ export default function Root() {
   return (
     <>
       <Nav />
-      <div id='detail' className='py-10'>
+      <main id='detail' className='py-10 flex justify-center'>
         <Outlet />
-      </div>
+      </main>
     </>
   )
 }

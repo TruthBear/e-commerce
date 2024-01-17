@@ -16,22 +16,20 @@ export default function Product() {
       console.log(error);
     })
   },[productId])
-  return (
-    <main className='flex justify-center'>
-      <div className='w-[1200px] flex justify-center'>
-        {
-            
-        }        
+  return ( 
+    <div className='w-[1200px] flex justify-center'>
+      {
+          
+      }        
 
-        {/* <div>
-          <img src="https://placehold.co/600" alt="상품이름" />
-        </div>
-        <div>
-          <p>상품 제목</p>
-          <p>상품 브랜드</p>
-          <p>상품가격</p>
-        </div> */}
+      {/* <div>
+        <img src="https://placehold.co/600" alt="상품이름" />
       </div>
-    </main>
+      <div>
+        <p>상품 제목</p>
+        <p>상품 브랜드</p>
+        <p>상품가격</p>
+      </div> */}
+    </div>
   )
 }

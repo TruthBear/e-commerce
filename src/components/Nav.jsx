@@ -1,16 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Nav() {
+
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState('');
+  function searchClick() {
+    navigate(`/search?name=asdf`)
+  }
+  function searchChange(e) {
+    setKeyword(e.target.value)
+  }
 
   const category = [
     "TOP", "OUTER", "PANTS", "ONEPIECE", "SKIRT", "SNEAKERS", "SHOES", "HEAD_WEAR", "ACCESSORY", 
   ]
 
   const categoryPrint = category.map(function(item, index){
-    return <li key={index}><Link to={`/categories/${item}`}>{item}</Link></li>
-  })
-
+    return <li key={index}><Link to={`/categories/${item}`} state={{key:"gd"}}>{item}</Link></li>
+  });
 
   return (
     <header className='flex flex-col items-center '>
@@ -24,7 +32,8 @@ export default function Nav() {
               <li>CART <span>0</span></li>
               <li>MY PAGE</li>
               <li>
-                <input className='bg-slate-300' type="text" placeholder='검색창으로 쓸꺼임' />
+                <input type="text" onChange={searchChange} value={keyword} />
+                <button onClick={searchClick}>검색</button>
               </li>
             </ul>
           </div>

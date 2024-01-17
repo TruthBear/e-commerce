@@ -6,6 +6,7 @@ import Root from './Page/Root';
 import Category from './Page/Category';
 import Product from './Page/Product';
 import Home from './Page/Home';
+import Search from './Page/Search';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: "/product/:id",
           element: <Product />
+        },
+        {
+          path: "/search",
+          element: <Search />
         }
       ]
     }
