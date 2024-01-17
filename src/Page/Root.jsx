@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <>
       <Nav />
-      <main id='detail' className='py-10 flex justify-center'>
+      <main id='detail' className='py-10 flex justify-center bg-gray-100'>
         <Outlet />
       </main>
     </>

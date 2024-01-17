@@ -33,7 +33,7 @@ export default function Product() {
           return <Link  key={item.id} to={`/product/${item.id}`}><li className='w-[200px] hover:bg-gray-200 p-3'>
           <img src="https://placehold.co/200x200" alt={item.name} />
           <p>{item.name}</p>
-          <p>{Number(item.price).toLocaleString()}</p>
+          <p>{item.price.toLocaleString()}원</p>
         </li></Link>
         }) :"못받음"
         }
