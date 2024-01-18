@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { sortTaps } from '../category';
-import { Audio } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
+
 
 export default function Search() {
+
   const _ = require('lodash')
   const location = useLocation();
   const taps = sortTaps;
@@ -23,7 +25,7 @@ export default function Search() {
 
   useEffect(()=>{
     const url = `https://kecommerce.shop/api/categories/${category}/detail?`
-    const queryString = new URLSearchParams(
+    let queryString = new URLSearchParams(
       _.pickBy({
       page: pageNumber,
       name : searchName,
@@ -38,12 +40,14 @@ export default function Search() {
       setProducts(response.data.entity.products)
       let timer = setTimeout(() => {
         setloading(false)
-      }, 100);
+      }, !sort[0] ? 100 : 1000);
     })
     .catch(function (error) {
       console.log(error);
     })
-  },[category,pageNumber,searchName,brandName,minPrice,maxPrice,sort])
+  },[category,pageNumber,searchName,brandName,minPrice,maxPrice,sort,])
+    
+
   
 
   return (
@@ -70,15 +74,16 @@ export default function Search() {
           {
             loading === true 
             ? <div className='flex justify-center pt-[200px]'>
-                <Audio
+                <Oval
+                  visible={true}
                   height="80"
                   width="80"
-                  radius="9"
-                  color="green"
-                  ariaLabel="loading"
-                  wrapperStyle
-                  wrapperClass
-                /> 
+                  color="#a6a6a6"
+                  secondaryColor="null"
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
               </div>
             : products?.map((item, index) => (
               <li key={index} className='bg-slate-400 duration-100'>

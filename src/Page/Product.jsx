@@ -20,7 +20,7 @@ export default function Product() {
     <div className='w-[1200px] flex flex-col items-center'>     
       <div className='w-[1000px] bg-white shadow-lg flex flex-col p-10 space-y-5'>
         <div className=''>
-          <p className='text-5xl'>{product?.name}</p>
+          <p className='text-5xl font-bold'>{product?.name}</p>
         </div>
         <div className='flex justify-between'>
           <div>
