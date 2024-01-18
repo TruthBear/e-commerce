@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { categoryList } from '../category';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 export default function Home() {
   const category = categoryList;
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('')
   const [selectCategory, setSelectCategory] = useState('TOP');
 
@@ -16,7 +17,14 @@ export default function Home() {
 
   function onChangeInputValue(e) {
     setInputValue(e.target.value)
-    console.log(e.target.value)
+  }
+
+  function clickSearch() {
+    if(inputValue === ''){
+      alert("검색어를 입력하세요")
+    }else {
+      navigate( `/search?page=1&name=${inputValue}`, {state : {category : selectCategory}})
+    }
   }
 
 
@@ -30,7 +38,7 @@ export default function Home() {
             category.map((item, index) => <option value={item} key={index}>{item}</option>)
           }
         </select>
-        <Link to={`/search`} state={{category:selectCategory}} className='bg-black text-2xl w-[10%] text-white flex justify-center items-center pr-1 ml-5'><FaSearch /></Link>
+        <button onClick={clickSearch} className='bg-black text-2xl w-[10%] text-white flex justify-center items-center pr-1 ml-5'><FaSearch /></button>
       </div>
     </div>
   )

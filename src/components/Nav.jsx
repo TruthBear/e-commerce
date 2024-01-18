@@ -6,12 +6,12 @@ export default function Nav() {
 
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState('');
-  function searchClick() {
-    navigate(`/search?name=asdf`)
-  }
-  function searchChange(e) {
-    setKeyword(e.target.value)
-  }
+  // function searchClick() {
+  //   navigate(`/search?name=asdf`)
+  // }
+  // function searchChange(e) {
+  //   setKeyword(e.target.value)
+  // }
 
   const category = categoryList
 
@@ -30,10 +30,10 @@ export default function Nav() {
               <li>JOIN US</li>
               <li>CART <span>0</span></li>
               <li>MY PAGE</li>
-              <li>
+              {/* <li>
                 <input type="text" onChange={searchChange} value={keyword} />
                 <button onClick={searchClick}>검색</button>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
