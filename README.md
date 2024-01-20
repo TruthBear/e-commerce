@@ -1,5 +1,5 @@
-# 네트리파이 주소
-https://main--radiant-eclair-f68822.netlify.app/
+# 도메인주소
+https://www.kfecommerce.shop/
 
 # Getting Started with Create React App
 
