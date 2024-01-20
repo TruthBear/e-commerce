@@ -14,17 +14,17 @@ export default function Search() {
   const [category, setCategory] = useState(location.state.category);
   const [pageNumber, setPageNumber] = useState(querys.get("page"));
   const [searchName, setSearchName] = useState(querys.get("name"));
-  const [brandName, setBrandName] = useState(null)
+  const [brandName, setBrandName] = useState(null);
   const [minPrice, setMinprice] = useState(null);
   const [maxPrice, setMaxprice] = useState(null);
   const [sort, setSort] = useState(taps[0].value);
   const [products, setProducts] = useState();
-  const [loading, setloading] = useState(true)
+  const [loading, setloading] = useState(true);
 
 
 
   useEffect(()=>{
-    const url = `https://kecommerce.shop/api/categories/${category}/detail?`
+    const url = `https://kecommerce.shop/api/categories/${category}/detail?`;
     let queryString = new URLSearchParams(
       _.pickBy({
       page: pageNumber,
@@ -45,7 +45,7 @@ export default function Search() {
     .catch(function (error) {
       console.log(error);
     })
-  },[category,pageNumber,searchName,brandName,minPrice,maxPrice,sort,])
+  },[category,pageNumber,searchName,brandName,minPrice,maxPrice,sort,]);
     
 
   

@@ -20,10 +20,20 @@ export default function Home() {
   }
 
   function clickSearch() {
-    if(inputValue === ''){
+    if(inputValue === '') {
       alert("검색어를 입력하세요")
     }else {
       navigate( `/search?page=1&name=${inputValue}`, {state : {category : selectCategory}})
+    }
+  }
+
+  function enterSearch(e) {
+    if(e.key === "Enter") {
+      if(inputValue === '') {
+        alert("검색어를 입력하세요")
+      }else {
+        navigate( `/search?page=1&name=${inputValue}`, {state : {category : selectCategory}})
+      }
     }
   }
 
@@ -32,7 +42,7 @@ export default function Home() {
   return (
     <div>
       <div className='bg-white w-[800px] overflow-hidden rounded-full flex'>
-        <input onChange={onChangeInputValue} value={inputValue} type="text" className='w-[70%] text-2xl outline-none p-3 pl-10 ' placeholder='검색하셈' />
+        <input onKeyUp={enterSearch} onChange={onChangeInputValue} value={inputValue} type="text" className='w-[70%] text-2xl outline-none p-3 pl-10 ' placeholder='검색하셈' />
         <select onChange={onChangeCategory} name="" id="" className='text-2xl w-[20%] px-5 outline-none'>
           {
             category.map((item, index) => <option value={item} key={index}>{item}</option>)
