@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { sortTaps } from '../category';
 import { Oval } from 'react-loader-spinner';
 
 
 export default function Search() {
 
-  const _ = require('lodash')
+  const _ = require('lodash');
   const location = useLocation();
   const taps = sortTaps;
   const querys = new URLSearchParams(location.search);
@@ -20,7 +20,9 @@ export default function Search() {
   const [sort, setSort] = useState(taps[0].value);
   const [products, setProducts] = useState();
   const [loading, setloading] = useState(true);
-
+  
+  const inputMinPrice = useRef();
+  const inputMaxPrice = useRef();
 
 
   useEffect(()=>{
@@ -47,13 +49,29 @@ export default function Search() {
     })
   },[category,pageNumber,searchName,brandName,minPrice,maxPrice,sort,]);
     
-
   
+  function isNumber() {
+    if(isNaN(Number(inputMinPrice.current.value))){
+      console.log("다시 써라")
+    }else {
+      console.log("숫자 맞음")
+    }
+  }
 
   return (
     <div className='flex w-[1200px] space-x-10 px-[12px]'>
       <div className='w-1/4 bg-slate-200'>
-        여기에 필터
+        <div>
+          <div>
+            <label htmlFor="min-price">최소가격</label>
+            <input ref={inputMinPrice} type="text" name="min-price" id="min-price" />
+            <button onClick={isNumber} >버튼</button>
+          </div>
+          <div>
+            <label htmlFor="max-price">최대 가격</label>
+            <input ref={inputMaxPrice} type="number" name="max-price" id="max-price" />
+          </div>
+        </div>
       </div>
       <div className='w-3/4 bg-red-200'>
         <ul className='flex justify-end'>
